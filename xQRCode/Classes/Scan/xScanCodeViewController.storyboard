@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YIt-x9-d4G">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scan Code View Controller-->
+        <scene sceneID="dGH-2i-3Ue">
+            <objects>
+                <viewController id="YIt-x9-d4G" customClass="xScanCodeViewController" customModule="xQRCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QhP-Bz-ojI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pyi-Ng-Vi2">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rPR-ZQ-k8b">
+                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="BWT-37-5yy"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="scan_back.png"/>
+                                        <connections>
+                                            <action selector="backBtnClick" destination="YIt-x9-d4G" eventType="touchUpInside" id="0zQ-vT-f4U"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPv-VZ-w9f">
+                                        <rect key="frame" x="370" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="wwy-Le-HRi"/>
+                                        </constraints>
+                                        <state key="normal" title="相册">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="albumBtnClick" destination="YIt-x9-d4G" eventType="touchUpInside" id="JLQ-V1-o5h"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="LPv-VZ-w9f" secondAttribute="bottom" id="9Ew-AO-DLf"/>
+                                    <constraint firstAttribute="height" constant="44" id="Cje-t2-WDw"/>
+                                    <constraint firstItem="rPR-ZQ-k8b" firstAttribute="leading" secondItem="pyi-Ng-Vi2" secondAttribute="leading" id="CpT-EW-ObZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="LPv-VZ-w9f" secondAttribute="trailing" id="k3n-PE-wlN"/>
+                                    <constraint firstItem="LPv-VZ-w9f" firstAttribute="top" secondItem="pyi-Ng-Vi2" secondAttribute="top" id="ocN-zk-hbP"/>
+                                    <constraint firstItem="rPR-ZQ-k8b" firstAttribute="top" secondItem="pyi-Ng-Vi2" secondAttribute="top" id="qte-nX-fRj"/>
+                                    <constraint firstAttribute="bottom" secondItem="rPR-ZQ-k8b" secondAttribute="bottom" id="zN2-er-lqn"/>
+                                </constraints>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i45-aP-aHS">
+                                <rect key="frame" x="83" y="329" width="248" height="248"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scan_blue_line.png" translatesAutoresizingMaskIntoConstraints="NO" id="tSC-1e-fcc">
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="16"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="i45-aP-aHS" secondAttribute="height" id="3dc-Mz-q1i"/>
+                                    <constraint firstAttribute="trailing" secondItem="tSC-1e-fcc" secondAttribute="trailing" id="dfe-8s-GQi"/>
+                                    <constraint firstItem="tSC-1e-fcc" firstAttribute="top" secondItem="i45-aP-aHS" secondAttribute="top" id="jv2-Yg-2DB"/>
+                                    <constraint firstItem="tSC-1e-fcc" firstAttribute="leading" secondItem="i45-aP-aHS" secondAttribute="leading" id="njT-gf-BTw"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mEK-FL-I3u">
+                                <rect key="frame" x="186.5" y="801" width="41" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mEK-FL-I3u" secondAttribute="height" multiplier="1:1" id="Sbk-Sf-izU"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="lYj-h0-wZ6"/>
+                                </constraints>
+                                <state key="normal" image="light_off.png"/>
+                                <connections>
+                                    <action selector="lightBtnClick:" destination="YIt-x9-d4G" eventType="touchUpInside" id="b0u-VP-eWd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Syu-mm-UrK"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pyi-Ng-Vi2" firstAttribute="leading" secondItem="Syu-mm-UrK" secondAttribute="leading" id="5iX-qn-gm3"/>
+                            <constraint firstItem="i45-aP-aHS" firstAttribute="centerY" secondItem="Syu-mm-UrK" secondAttribute="centerY" id="OGq-U3-s7Q"/>
+                            <constraint firstItem="Syu-mm-UrK" firstAttribute="bottom" secondItem="mEK-FL-I3u" secondAttribute="bottom" constant="20" id="Ykz-Ib-lix"/>
+                            <constraint firstItem="pyi-Ng-Vi2" firstAttribute="trailing" secondItem="Syu-mm-UrK" secondAttribute="trailing" id="cMR-4x-7Z2"/>
+                            <constraint firstItem="mEK-FL-I3u" firstAttribute="centerX" secondItem="Syu-mm-UrK" secondAttribute="centerX" id="f0g-mA-RA8"/>
+                            <constraint firstItem="i45-aP-aHS" firstAttribute="centerX" secondItem="Syu-mm-UrK" secondAttribute="centerX" id="h7k-j3-7bG"/>
+                            <constraint firstItem="pyi-Ng-Vi2" firstAttribute="top" secondItem="Syu-mm-UrK" secondAttribute="top" id="mQu-K0-Zcd"/>
+                            <constraint firstItem="i45-aP-aHS" firstAttribute="width" secondItem="QhP-Bz-ojI" secondAttribute="width" multiplier="3:5" id="pMf-fj-hYw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scanLine" destination="tSC-1e-fcc" id="VOZ-jR-KSv"/>
+                        <outlet property="scanLineTopLayout" destination="jv2-Yg-2DB" id="lOG-t0-i5Q"/>
+                        <outlet property="scanView" destination="i45-aP-aHS" id="UFd-Et-gXw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cwc-JQ-0lZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305.79710144927537" y="-157.36607142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="light_off.png" width="41" height="41"/>
+        <image name="scan_back.png" width="24" height="24"/>
+        <image name="scan_blue_line.png" width="250" height="16"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

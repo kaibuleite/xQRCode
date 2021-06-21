@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'xQRCode'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A short description of xQRCode.'
 
 # This description is used to generate tags and improve search results.
@@ -21,16 +21,19 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/177955297@qq.com/xQRCode'
+  s.homepage         = 'https://github.com/kaibuleite/xQRCode'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '177955297@qq.com' => '177955297@qq.com' }
-  s.source           = { :git => 'https://github.com/177955297@qq.com/xQRCode.git', :tag => s.version.to_s }
+  s.author           = { 'kaibuleite' => '177955297@qq.com' }
+  s.source           = { :git => 'https://github.com/kaibuleite/xQRCode.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'
-
+  
+  # 类文件
   s.source_files = 'xQRCode/Classes/**/*'
+  # 资源文件（文件会直接放到目录下）
+  s.resources = 'xQRCode/Assets/**/*'
   
   # s.resource_bundles = {
   #   'xQRCode' => ['xQRCode/Assets/*.png']
@@ -39,4 +42,8 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'xExtension'
+  s.dependency 'xKit'
+  s.dependency 'xManager'
+  
 end

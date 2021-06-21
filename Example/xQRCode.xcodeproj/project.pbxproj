@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		287538E16DA23409E8136E43 /* Pods-xQRCode_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xQRCode_Tests.release.xcconfig"; path = "Target Support Files/Pods-xQRCode_Tests/Pods-xQRCode_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		3AC5A9C3115D4E47EBF7D152 /* xQRCode.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = xQRCode.podspec; path = ../xQRCode.podspec; sourceTree = "<group>"; };
+		3AC5A9C3115D4E47EBF7D152 /* xQRCode.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = xQRCode.podspec; path = ../xQRCode.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		40843F60BB5DC4C2A2A25DBA /* Pods-xQRCode_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xQRCode_Example.debug.xcconfig"; path = "Target Support Files/Pods-xQRCode_Example/Pods-xQRCode_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		445B6F35C58A093026A97859 /* Pods_xQRCode_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xQRCode_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4506324FFF1B7C223FC849AF /* Pods_xQRCode_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_xQRCode_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,8 +43,8 @@
 		607FACE51AFB9204008FA782 /* xQRCode_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xQRCode_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		732C897EB792E902D448D5BC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		76477DBBD970F510E7A01B07 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		732C897EB792E902D448D5BC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		76477DBBD970F510E7A01B07 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		9D5E4B483AC6F788FDEC31B6 /* Pods-xQRCode_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xQRCode_Example.release.xcconfig"; path = "Target Support Files/Pods-xQRCode_Example/Pods-xQRCode_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B696900C1BE959F519E80F06 /* Pods-xQRCode_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-xQRCode_Tests.debug.xcconfig"; path = "Target Support Files/Pods-xQRCode_Tests/Pods-xQRCode_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,7 +156,6 @@
 				B696900C1BE959F519E80F06 /* Pods-xQRCode_Tests.debug.xcconfig */,
 				287538E16DA23409E8136E43 /* Pods-xQRCode_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -291,10 +291,18 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-xQRCode_Example/Pods-xQRCode_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/xDefine/xDefine.framework",
+				"${BUILT_PRODUCTS_DIR}/xExtension/xExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/xKit/xKit.framework",
+				"${BUILT_PRODUCTS_DIR}/xManager/xManager.framework",
 				"${BUILT_PRODUCTS_DIR}/xQRCode/xQRCode.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/xDefine.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/xExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/xKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/xManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/xQRCode.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

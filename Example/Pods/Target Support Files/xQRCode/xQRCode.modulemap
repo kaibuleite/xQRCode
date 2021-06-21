@@ -1,0 +1,6 @@
+framework module xQRCode {
+  umbrella header "xQRCode-umbrella.h"
+
+  export *
+  module * { export * }
+}

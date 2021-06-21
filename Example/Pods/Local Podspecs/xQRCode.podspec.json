@@ -1,0 +1,34 @@
+{
+  "name": "xQRCode",
+  "version": "1.0.0",
+  "summary": "A short description of xQRCode.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/kaibuleite/xQRCode",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "kaibuleite": "177955297@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/kaibuleite/xQRCode.git",
+    "tag": "1.0.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "xQRCode/Classes/**/*",
+  "resources": "xQRCode/Assets/**/*",
+  "dependencies": {
+    "xExtension": [
+
+    ],
+    "xKit": [
+
+    ],
+    "xManager": [
+
+    ]
+  }
+}
