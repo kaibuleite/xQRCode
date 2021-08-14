@@ -1,11 +1,11 @@
 PODS:
-  - xDefine (1.0.2)
-  - xExtension (1.0.8):
+  - xDefine (1.0.4)
+  - xExtension (1.1.1):
     - xDefine
-  - xKit (1.0.4):
+  - xKit (1.0.6):
     - xDefine
     - xExtension
-  - xManager (1.0.4):
+  - xManager (1.0.5):
     - xDefine
     - xExtension
   - xQRCode (1.0.0):
@@ -28,10 +28,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  xDefine: 0df7b51c0e6edb71ca9fd667f728699d0a7a1b12
-  xExtension: f53765a72cdb40b8dd8106f37c426d7b4084ba05
-  xKit: 2663b7bd1f989fc19f8ec5d869798e3bcafdd443
-  xManager: 06713e3534c8c98b0cf6cfd18d93f4bb91f23a81
+  xDefine: ca6c6eef825544db8b43409e66dbff05eca7ac58
+  xExtension: 70d1f6b92b268f1e36236f8be26ed86c72628a0b
+  xKit: 60f95439ecf0de4fa575b51801274be297f5bdb2
+  xManager: 76f3c21ff4bf6bf51597b6ecb8916662c4aa9d8b
   xQRCode: d975b7113278cfbdccb3aa8d6ec323e10ce88d41
 
 PODFILE CHECKSUM: feab87b24e2e757c9caf4f826fb37d88d40363a7

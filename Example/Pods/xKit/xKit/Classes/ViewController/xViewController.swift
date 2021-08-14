@@ -76,7 +76,7 @@ open class xViewController: UIViewController {
         guard let ident = segue.identifier else { return }
         for key in self.childViewControllerKeys {
             guard key == ident else { continue }
-            self.addChildViewController(segue.destination)   // 绑定父控制器
+            self.addChild(segue.destination)   // 绑定父控制器
             break
         }
     }

@@ -21,7 +21,7 @@ extension UIImage {
     ///   - handler: 完成回调
     public func xSavePNGToAlbum(completed : @escaping xHandlerSaveImage)
     {
-        let data = UIImagePNGRepresentation(self)
+        let data = self.pngData()
         self.xSaveImageToAlbum(data, completed: completed)
     }
     
@@ -32,7 +32,7 @@ extension UIImage {
     public func xSaveJPGToAlbum(quality : CGFloat = 1,
                                 completed : @escaping xHandlerSaveImage)
     {
-        let data = UIImageJPEGRepresentation(self, quality)
+        let data = self.jpegData(compressionQuality: quality)
         self.xSaveImageToAlbum(data, completed: completed)
     }
     

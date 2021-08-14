@@ -45,8 +45,8 @@ extension CALayer {
         layer.fillColor = UIColor.clear.cgColor
         layer.strokeColor = color.cgColor
         layer.lineWidth = 1
-        layer.lineCap = kCALineCapRound
-        layer.lineJoin = kCALineJoinRound
+        layer.lineCap = .round
+        layer.lineJoin = .round
         layer.lineDashPhase = 0
         layer.lineDashPattern = [NSNumber(value: length),
                                  NSNumber(value: spacing)]

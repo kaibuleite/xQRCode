@@ -95,7 +95,7 @@ extension UIImage {
     public func xCompressTo(size : CGFloat) -> Data?
     {
         // 原始大小
-        var data = UIImageJPEGRepresentation(self, 1)
+        var data = self.jpegData(compressionQuality: 1)
         guard size > 0 else { return data }
         
         var kb = CGFloat(data?.count ?? 0) / 1024
@@ -104,7 +104,7 @@ extension UIImage {
         while kb > size {
             if quality < sub { sub /= 2 }
             quality -= sub
-            data = UIImageJPEGRepresentation(self, quality)
+            data = self.jpegData(compressionQuality: quality)
             kb = CGFloat(data?.count ?? 0) / 1024
         }
         return data

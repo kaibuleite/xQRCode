@@ -35,7 +35,7 @@ open class xNavigationController: UINavigationController {
         }
     }
     /// 修改状态栏样式
-    open override var childViewControllerForStatusBarStyle: UIViewController? {
+    open override var childForStatusBarStyle: UIViewController? {
         return self.topViewController
     }
     open override func pushViewController(_ viewController: UIViewController,
@@ -74,7 +74,7 @@ open class xNavigationController: UINavigationController {
     public func getChildrenClass(_ name : AnyClass) -> [UIViewController]
     {
         var ret = [UIViewController]()
-        self.childViewControllers.forEach {
+        self.children.forEach {
             (obj) in
             if obj.isMember(of: name) {
                 ret.append(obj)
@@ -86,7 +86,7 @@ open class xNavigationController: UINavigationController {
     public func releaseChildrenClass(list : [AnyClass],
                                      animated : Bool = false)
     {
-        var childArray = self.childViewControllers
+        var childArray = self.children
         list.forEach {
             (release_class) in
             for (i, obj) in childArray.enumerated() {

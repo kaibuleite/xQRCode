@@ -31,7 +31,7 @@ open class xNibView: xView {
         self.nibView.backgroundColor = .clear
         self.nibView.clipsToBounds = false
         self.addSubview(self.nibView)
-        self.sendSubview(toBack: self.nibView)
+        self.sendSubviewToBack(self.nibView)
         
     }
     open override func viewDidAppear() {

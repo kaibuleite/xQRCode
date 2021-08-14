@@ -17,6 +17,12 @@ extension String {
     public mutating func xRead(input : UITextField) -> Bool
     {
         self = input.text ?? ""
+        if self.count == 0 {
+            let msg = input.placeholder ?? ""
+            if msg.count > 0 {
+                msg.xAlertTip()
+            }
+        }
         return self.count > 0
     }
     

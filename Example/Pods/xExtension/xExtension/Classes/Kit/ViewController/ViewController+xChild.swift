@@ -19,7 +19,7 @@ extension UIViewController {
                           in container : UIView,
                           frame : CGRect = .zero)
     {
-        self.addChildViewController(vc)
+        self.addChild(vc)
         if frame == .zero {
             vc.view.frame = container.bounds
         }

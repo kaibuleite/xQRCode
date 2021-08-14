@@ -79,7 +79,7 @@ open class xCountDownButton: xButton {
                 ws.isUserInteractionEnabled = true
             }
         }
-        RunLoop.main.add(timer, forMode: .commonModes)
+        RunLoop.main.add(timer, forMode: .common)
         self.timer = timer
     }
     /// 关闭定时器

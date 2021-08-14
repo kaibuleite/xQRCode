@@ -197,7 +197,7 @@ extension String {
     public func xToLineString(color : UIColor = .lightGray) -> NSAttributedString
     {
         var dic = [NSAttributedString.Key : Any]()
-        dic[.strikethroughStyle] = NSUnderlineStyle.styleSingle.rawValue
+        dic[.strikethroughStyle] = NSUnderlineStyle.single.rawValue
         dic[.strikethroughColor] = color
         dic[.baselineOffset] = 0
         let atr = NSAttributedString.init(string: self,

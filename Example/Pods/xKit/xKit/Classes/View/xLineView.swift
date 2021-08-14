@@ -57,7 +57,7 @@ public class xLineView: xView {
         layer.fillColor = UIColor.clear.cgColor
         layer.strokeColor = self.lineColor.cgColor
         layer.lineWidth = frame.height
-        layer.lineJoin = kCALineJoinRound
+        layer.lineJoin = .round
         layer.lineDashPhase = 0
         layer.lineDashPattern = [NSNumber(value: self.dashDrawWidth),
                                  NSNumber(value: self.dashSkipWidth)]

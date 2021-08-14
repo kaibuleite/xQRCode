@@ -60,11 +60,11 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
     // MARK: - UIImagePickerControllerDelegate
     /// 获取图片
     public func imagePickerController(_ picker: UIImagePickerController,
-                                      didFinishPickingMediaWithInfo info: [String : Any])
+                                      didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
-        var type = UIImagePickerControllerOriginalImage
+        var type = UIImagePickerController.InfoKey.originalImage
         if picker.allowsEditing == true {
-            type = UIImagePickerControllerEditedImage
+            type = .editedImage
         }
         guard let img = info[type] as? UIImage else {
             self.failure(picker)

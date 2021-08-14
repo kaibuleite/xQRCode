@@ -49,8 +49,8 @@ open class xImageView: UIImageView {
         self.maskLayer.backgroundColor = UIColor.clear.cgColor
         self.maskLayer.fillColor = UIColor.red.cgColor
         self.maskLayer.lineWidth = 1
-        self.maskLayer.lineCap = kCALineCapRound
-        self.maskLayer.lineJoin = kCALineJoinRound
+        self.maskLayer.lineCap = .round
+        self.maskLayer.lineJoin = .round
         self.contentMode = .scaleAspectFill // 全填充
         let size = self.bounds.size
         if self.fillColor == .clear {
