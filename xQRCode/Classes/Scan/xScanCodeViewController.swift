@@ -83,8 +83,8 @@ public class xScanCodeViewController: UIViewController, AVCaptureMetadataOutputO
         self.scanLine.isHidden = true
         // 边框图层
         self.borderLayer.lineWidth = 3
-        self.borderLayer.lineCap = kCALineCapRound
-        self.borderLayer.lineJoin = kCALineJoinRound
+        self.borderLayer.lineCap = .round
+        self.borderLayer.lineJoin = .round
         self.borderLayer.backgroundColor = UIColor.clear.cgColor
         self.borderLayer.borderColor = UIColor.clear.cgColor
         self.borderLayer.fillColor = UIColor.clear.cgColor
