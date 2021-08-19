@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -54,6 +53,9 @@
                                     <constraint firstItem="rPR-ZQ-k8b" firstAttribute="top" secondItem="pyi-Ng-Vi2" secondAttribute="top" id="qte-nX-fRj"/>
                                     <constraint firstAttribute="bottom" secondItem="rPR-ZQ-k8b" secondAttribute="bottom" id="zN2-er-lqn"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="vc" destination="YIt-x9-d4G" id="SPH-S1-y0G"/>
+                                </connections>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i45-aP-aHS">
                                 <rect key="frame" x="83" y="329" width="248" height="248"/>
@@ -62,7 +64,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="248" height="16"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="i45-aP-aHS" secondAttribute="height" id="3dc-Mz-q1i"/>
                                     <constraint firstAttribute="trailing" secondItem="tSC-1e-fcc" secondAttribute="trailing" id="dfe-8s-GQi"/>
@@ -83,7 +85,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Syu-mm-UrK"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.1764705882" green="0.1764705882" blue="0.1764705882" alpha="0.5" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pyi-Ng-Vi2" firstAttribute="leading" secondItem="Syu-mm-UrK" secondAttribute="leading" id="5iX-qn-gm3"/>
                             <constraint firstItem="i45-aP-aHS" firstAttribute="centerY" secondItem="Syu-mm-UrK" secondAttribute="centerY" id="OGq-U3-s7Q"/>
@@ -103,15 +105,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwc-JQ-0lZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305.79710144927537" y="-157.36607142857142"/>
+            <point key="canvasLocation" x="-68" y="-139"/>
         </scene>
     </scenes>
     <resources>
         <image name="light_off.png" width="41" height="41"/>
         <image name="scan_back.png" width="24" height="24"/>
         <image name="scan_blue_line.png" width="250" height="16"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

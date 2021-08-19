@@ -11,7 +11,7 @@ import xExtension
 import xKit
 import xManager
 
-public class xScanCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     // MARK: - Handler
     /// 扫描完成回调
