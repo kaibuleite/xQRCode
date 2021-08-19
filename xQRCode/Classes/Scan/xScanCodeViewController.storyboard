@@ -53,9 +53,6 @@
                                     <constraint firstItem="rPR-ZQ-k8b" firstAttribute="top" secondItem="pyi-Ng-Vi2" secondAttribute="top" id="qte-nX-fRj"/>
                                     <constraint firstAttribute="bottom" secondItem="rPR-ZQ-k8b" secondAttribute="bottom" id="zN2-er-lqn"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="vc" destination="YIt-x9-d4G" id="SPH-S1-y0G"/>
-                                </connections>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i45-aP-aHS">
                                 <rect key="frame" x="83" y="329" width="248" height="248"/>
