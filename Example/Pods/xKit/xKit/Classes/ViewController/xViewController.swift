@@ -25,9 +25,9 @@ open class xViewController: UIViewController {
     // MARK: - Public Property
     /// 是否显示中
     public var isAppear = false
-    /// 是否完成数据加载
+    /// 是否完成数据加载(默认已完成)
     public var isLoadRequestDataCompleted = true
-    /// 是否是父控制器
+    /// 是否是根级父控制器
     public var isRootParentViewController = false
     /// 子控制器Key
     public var childViewControllerKeys = [String]()
@@ -35,9 +35,9 @@ open class xViewController: UIViewController {
     // MARK: - 内存释放
     deinit {
         if self.isRootParentViewController {
-            print("****************************")
+            print(">>>>> 释放视图控制器")
         }
-        print("♻️ \(self.xTitle) \(self.xClassInfoStruct.name)")
+        print("♻️ \(self.xClassInfoStruct.name)")
     }
     
     // MARK: - Open Override Func

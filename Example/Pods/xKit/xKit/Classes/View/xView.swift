@@ -8,7 +8,13 @@
 import UIKit
 
 open class xView: UIView {
-
+    
+    // MARK: - IBInspectable Property
+    /// 边框线
+    @IBInspectable public var borderWidth : CGFloat = 0
+    /// 边框颜色
+    @IBInspectable public var borderColor : UIColor = .clear
+    
     // MARK: - Private Property
     /// 是否加载过样式
     private var isInitCompleted = false
@@ -31,7 +37,11 @@ open class xView: UIView {
 
     // MARK: - Open Func
     /// 视图已加载
-    open func viewDidLoad() { }
+    open func viewDidLoad() {
+        guard self.borderWidth > 0 else { return }
+        self.layer.borderWidth = self.borderWidth
+        self.layer.borderColor = self.borderColor.cgColor
+    }
     /// 视图已显示（GCD调用）
     open func viewDidAppear() { }
     

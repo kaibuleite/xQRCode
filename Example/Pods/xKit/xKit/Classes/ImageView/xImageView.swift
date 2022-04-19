@@ -51,7 +51,6 @@ open class xImageView: UIImageView {
         self.maskLayer.lineWidth = 1
         self.maskLayer.lineCap = .round
         self.maskLayer.lineJoin = .round
-        self.contentMode = .scaleAspectFill // 全填充
         let size = self.bounds.size
         if self.fillColor == .clear {
             self.image = UIColor.xNewRandom(alpha: 0.3).xToImage(size: size)

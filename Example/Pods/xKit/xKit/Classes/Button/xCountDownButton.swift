@@ -10,17 +10,17 @@ import UIKit
 open class xCountDownButton: xButton {
     
     // MARK: - IBInspectable Property
-    /// 原标题
-    @IBInspectable public var title : String = "获取验证码"
+    /// 默认标题
+    @IBInspectable public var defaultTitle : String = "获取验证码"
     /// 普通时标题颜色
     @IBInspectable public var titleNormalColor : UIColor = .darkText
     /// 倒计时标题颜色
     @IBInspectable public var titleCountdownColor : UIColor = .lightGray
+    /// 普通时背景颜色
+    @IBInspectable public var backgroundNormalColor : UIColor = .darkText
+    /// 倒计时背景颜色
+    @IBInspectable public var backgroundCountdownColor : UIColor = .lightGray
     
-    /// 边框粗细
-    @IBInspectable public var borderWidth : CGFloat = 0
-    /// 普通时边框颜色
-    @IBInspectable public var borderNormalColor : UIColor = .darkText
     /// 倒计时边框颜色
     @IBInspectable public var borderCountdownColor : UIColor = .lightGray
     
@@ -39,10 +39,11 @@ open class xCountDownButton: xButton {
     open override func awakeFromNib() {
         super.awakeFromNib()
         self.tag = 0
-        self.setTitle(" \(self.title) ", for: .normal)
+        self.setTitle(" \(self.defaultTitle) ", for: .normal)
         self.setTitleColor(titleNormalColor, for: .normal)
-        self.layer.borderColor = self.borderNormalColor.cgColor
+        self.backgroundColor = self.backgroundNormalColor
         self.layer.borderWidth = self.borderWidth
+        self.layer.borderColor = self.borderColor.cgColor
     }
     
     // MARK: - Public Func
@@ -61,25 +62,36 @@ open class xCountDownButton: xButton {
     {
         self.closeTimer()
         self.tag = self.duration
-        self.setTitle(" \(self.tag)s ", for: .normal)
-        self.setTitleColor(self.titleCountdownColor, for: .normal)
-        self.layer.borderColor = self.borderCountdownColor.cgColor
+        self.setTitle(" \(self.tag)s ",
+                      for: .normal)
+        self.setTitleColor(self.titleCountdownColor,
+                           for: .normal)
+        self.backgroundColor = self.backgroundCountdownColor
+        if self.borderWidth > 0 {
+            self.layer.borderColor = self.borderCountdownColor.cgColor
+        }
         self.isUserInteractionEnabled = false
         
         let timer = Timer.xNew(timeInterval: 1, repeats: true) {
             [weak self] (timer) in
-            guard let ws = self else { return }
-            ws.tag -= 1
-            ws.setTitle(" \(ws.tag)s ", for: .normal)
-            if ws.tag == 0 {
-                ws.closeTimer()
-                ws.setTitle("\(ws.title) ", for: .normal)
-                ws.setTitleColor(ws.titleNormalColor, for: .normal)
-                ws.layer.borderColor = ws.borderNormalColor.cgColor
-                ws.isUserInteractionEnabled = true
+            guard let self = self else { return }
+            self.tag -= 1
+            self.setTitle(" \(self.tag)s ",
+                          for: .normal)
+            guard self.tag <= 0 else { return }
+            self.closeTimer()
+            self.setTitle("\(self.defaultTitle) ",
+                          for: .normal)
+            self.setTitleColor(self.titleNormalColor,
+                               for: .normal)
+            self.backgroundColor = self.backgroundNormalColor
+            if self.borderWidth > 0 {
+                self.layer.borderColor = self.borderColor.cgColor
             }
+            self.isUserInteractionEnabled = true
         }
-        RunLoop.main.add(timer, forMode: .common)
+        RunLoop.main.add(timer,
+                         forMode: .common)
         self.timer = timer
     }
     /// 关闭定时器

@@ -21,6 +21,24 @@ open class xTextView: UITextView {
     /// 最长内容
     @IBInspectable public var maxTextCount : Int = 100
     
+    // MARK: - Public Property
+    open override var text: String! {
+        didSet {
+            self.checkText()
+        }
+    }
+    /// 非nil内容
+    public var noNilText : String {
+        let str = self.text ?? ""
+        return str
+    }
+    /// 内容是否为空
+    public var isEmptyText : Bool {
+        let str = self.noNilText
+        let bol = (str.count == 0)
+        return bol
+    }
+    
     // MARK: - Private Property
     /// 是否加载过样式
     private var isInitCompleted = false

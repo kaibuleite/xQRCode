@@ -12,10 +12,17 @@ open class xButton: UIButton {
     // MARK: - IBInspectable Property
     /// 圆角
     @IBInspectable public var cornerRadius : CGFloat = 0
+    /// 边框线
+    @IBInspectable public var borderWidth : CGFloat = 0
+    /// 边框颜色
+    @IBInspectable public var borderColor : UIColor = .clear
     
     // MARK: - Open Override Func
     open override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.cornerRadius = self.cornerRadius
+        self.layer.borderWidth = self.borderWidth
+        self.layer.borderColor = self.borderColor.cgColor
     }
 }
+

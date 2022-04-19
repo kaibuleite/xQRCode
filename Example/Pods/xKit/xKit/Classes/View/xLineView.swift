@@ -23,6 +23,8 @@ public class xLineView: xView {
             self.drawDashLine()
         }
     }
+    /// 是否是垂直虚线
+    @IBInspectable public var isVerticalDashLine : Bool = false
     /// 虚线绘制宽度
     @IBInspectable public var dashDrawWidth : Float = 5
     /// 虚线跳过宽度
@@ -35,6 +37,8 @@ public class xLineView: xView {
     }
     public override func viewDidAppear() {
         super.viewDidAppear()
+        self.clipsToBounds = true
+        self.layer.masksToBounds = true
         self.backgroundColor = self.lineColor
         guard self.isDashLine == true else { return }
         self.drawDashLine()
@@ -63,9 +67,15 @@ public class xLineView: xView {
                                  NSNumber(value: self.dashSkipWidth)]
         
         let path = UIBezierPath()
-        path.move(to: CGPoint.init(x: 0, y: frame.height / 2))
-        path.addLine(to: CGPoint(x: frame.width, y: frame.height / 2))
-        
+        // 根据方向绘制虚线
+        if self.isVerticalDashLine {
+            path.move(to: CGPoint.init(x: frame.width / 2, y: 0))
+            path.addLine(to: CGPoint(x: frame.width / 2, y: frame.height))
+        }
+        else {
+            path.move(to: CGPoint.init(x: 0, y: frame.height / 2))
+            path.addLine(to: CGPoint(x: frame.width, y: frame.height / 2))
+        }
         layer.path = path.cgPath
         self.layer.addSublayer(layer)
     }

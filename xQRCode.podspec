@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'xQRCode'
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = 'A short description of xQRCode.'
   s.swift_version    = '5'      # Swift版本号
 
@@ -29,7 +29,7 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/kaibuleite/xQRCode.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '12.0'
   
   # 类文件
   s.source_files = 'xQRCode/Classes/**/*'
