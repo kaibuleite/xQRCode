@@ -10,8 +10,9 @@ import UIKit
 public class xClearView: xView {
     
     // MARK: - Public Override Func
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    public override func awakeFromNib() {
+        super.awakeFromNib()
         self.backgroundColor = .clear
     }
+    
 }

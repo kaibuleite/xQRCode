@@ -10,18 +10,32 @@ import UIKit
 open class xImageView: UIImageView {
     
     // MARK: - IBInspectable Property
-    /// 圆角
-    @IBInspectable public var cornerRadius : CGFloat = 0
+    /// 默认填充纯色图
+    @IBInspectable public var fillImage : UIColor = .clear
+    /// 边框线
+    @IBInspectable public var borderWidth : CGFloat = 0 {
+        willSet { self.layer.borderWidth = newValue }
+    }
+    /// 边框颜色
+    @IBInspectable public var borderColor : UIColor = .clear {
+        willSet { self.layer.borderColor = newValue.cgColor}
+    }
     /// 是否为圆形图片(优先级高于圆角)
     @IBInspectable public var isCircle : Bool = false
-    /// 默认填充色
-    @IBInspectable public var fillColor : UIColor = .clear
+    /// 圆角
+    @IBInspectable public var cornerRadius : CGFloat = 0
+    /// 左上圆角
+    @IBInspectable public var tlRadius : CGFloat = 0
+    /// 右上圆角
+    @IBInspectable public var trRadius : CGFloat = 0
+    /// 左下圆角
+    @IBInspectable public var blRadius : CGFloat = 0
+    /// 右下圆角
+    @IBInspectable public var brRadius : CGFloat = 0
     
     // MARK: - Private Property
-    /// 是否加载过样式
-    private var isInitCompleted = false
     /// 遮罩(考虑到性能问题，这边使用遮罩来实现圆角
-    private let maskLayer = CAShapeLayer()
+    let maskLayer = CAShapeLayer()
     
     // MARK: - Open Override Func
     open override func awakeFromNib() {
@@ -31,34 +45,56 @@ open class xImageView: UIImageView {
     required public init?(coder aDecoder: NSCoder) {
         // 没有指定构造器时，需要实现NSCoding的指定构造器
         super.init(coder: aDecoder)
-        // 如果没有实现awakeFromNib，则会调用该方法
+        // 参考xView说明
         self.initCompleted()
     }
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.initCompleted()
     }
+    /// 设置内容UI
+    func initCompleted()
+    {
+        self.backgroundColor = .clear
+        // 填充色
+        let size = self.bounds.size
+        if self.fillImage == .clear {
+            self.image = UIColor.xNewRandom(alpha: 0.3).xToImage(size: size)
+        } else {
+            self.image = self.fillImage.xToImage(size: size)
+        }
+        // 边框
+        if self.borderWidth > 0 {
+            self.layer.borderWidth = self.borderWidth
+            self.layer.borderColor = self.borderColor.cgColor
+        }
+        // 圆角遮罩
+        self.maskLayer.backgroundColor = UIColor.clear.cgColor
+        self.maskLayer.fillColor = UIColor.red.cgColor
+        self.maskLayer.lineWidth = 1
+        self.maskLayer.lineCap = .round
+        self.maskLayer.lineJoin = .round
+        if self.isCircle {
+            self.cornerRadius = self.bounds.width / 2
+        }
+        self.clip(cornerRadius: self.cornerRadius)
+        
+        DispatchQueue.main.async {
+            self.viewDidAppear()
+            guard self.cornerRadius != 0 else { return }
+            self.clip(tlRadius: self.tlRadius,
+                      trRadius: self.trRadius,
+                      blRadius: self.blRadius,
+                      brRadius: self.brRadius)
+        }
+    }
+    
     open override func layoutSubviews() {
         super.layoutSubviews()
         self.maskLayer.frame = self.bounds
     }
     
     // MARK: - Open Func
-    /// 视图已加载
-    open func viewDidLoad() {
-        self.maskLayer.backgroundColor = UIColor.clear.cgColor
-        self.maskLayer.fillColor = UIColor.red.cgColor
-        self.maskLayer.lineWidth = 1
-        self.maskLayer.lineCap = .round
-        self.maskLayer.lineJoin = .round
-        let size = self.bounds.size
-        if self.fillColor == .clear {
-            self.image = UIColor.xNewRandom(alpha: 0.3).xToImage(size: size)
-        }
-        else {
-            self.image = self.fillColor.xToImage(size: size)
-        }
-    }
     /// 视图已显示（GCD调用）
     open func viewDidAppear() {
         let radius = self.isCircle ? self.bounds.width / 2 : self.cornerRadius
@@ -69,8 +105,8 @@ open class xImageView: UIImageView {
     /// 规则圆角
     public func clip(cornerRadius : CGFloat)
     {
-        self.layer.cornerRadius = cornerRadius
         self.layer.masksToBounds = true
+        self.layer.cornerRadius = cornerRadius
         self.layer.mask = nil
     }
     /// 不规则圆角
@@ -97,20 +133,4 @@ open class xImageView: UIImageView {
         self.layer.mask = self.maskLayer
     }
     
-    // MARK: - Private Func
-    /// 设置内容UI
-    private func initCompleted()
-    {
-        // 添加锁,防止重复加载
-        objc_sync_enter(self)
-        guard self.isInitCompleted == false else { return }
-        
-        self.viewDidLoad()
-        DispatchQueue.main.async {
-            self.viewDidAppear()
-        }
-        
-        self.isInitCompleted = true
-        objc_sync_exit(self)
-    }
 }

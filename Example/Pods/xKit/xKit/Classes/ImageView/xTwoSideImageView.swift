@@ -31,8 +31,8 @@ public class xTwoSideImageView: xView {
     var isFlipping = false
     
     // MARK: - Public Override Func
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    public override func awakeFromNib() {
+        super.awakeFromNib()
         self.addSubview(self.frontIcon)
         self.addSubview(self.backIcon)
     }
@@ -110,5 +110,4 @@ public class xTwoSideImageView: xView {
         }
     }
     
-    // MARK: - Private Func
 }

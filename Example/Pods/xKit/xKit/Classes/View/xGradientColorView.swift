@@ -14,6 +14,10 @@ public class xGradientColorView: xView {
     private var colorLayer = CAGradientLayer()
     
     // MARK: - Public Override Func
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        self.backgroundColor = .clear
+    }
     public override func layoutSubviews() {
         super.layoutSubviews()
         self.colorLayer.frame = self.bounds
@@ -26,7 +30,6 @@ public class xGradientColorView: xView {
                             endPoint : CGPoint = .init(x: 0.5, y: 1),
                             locations : [Double] = [0, 1])
     {
-        self.backgroundColor = .clear
         self.colorLayer.removeFromSuperlayer()
         
         var cgcolors = [CGColor]()

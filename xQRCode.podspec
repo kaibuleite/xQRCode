@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'xQRCode'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.summary          = 'A short description of xQRCode.'
   s.swift_version    = '5'      # Swift版本号
 

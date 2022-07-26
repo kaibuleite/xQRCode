@@ -54,7 +54,8 @@ public class xDeviceManager: NSObject {
     /// 是否是iPAd
     public static var isPad : Bool
     {
-        let ret = UI_USER_INTERFACE_IDIOM() == .pad
+//        let ret = UI_USER_INTERFACE_IDIOM() == .pad
+        let ret = UIDevice.current.userInterfaceIdiom == .pad
         return ret
     }
     
@@ -136,7 +137,8 @@ public class xDeviceManager: NSObject {
         let str = "tel://" + phone
         guard let url = str.xToURL() else { return }
         guard UIApplication.shared.canOpenURL(url) else { return }
-        UIApplication.shared.openURL(url)
+//        UIApplication.shared.openURL(url)
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     // MARK: - 开关手电筒状态

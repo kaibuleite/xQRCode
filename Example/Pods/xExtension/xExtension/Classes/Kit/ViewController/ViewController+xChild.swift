@@ -20,12 +20,11 @@ extension UIViewController {
                           frame : CGRect = .zero)
     {
         self.addChild(vc)
+        container.addSubview(vc.view)
         if frame == .zero {
             vc.view.frame = container.bounds
-        }
-        else {
+        } else {
             vc.view.frame = frame
         }
-        container.addSubview(vc.view)
     }
 }

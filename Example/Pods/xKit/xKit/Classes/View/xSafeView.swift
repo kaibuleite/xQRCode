@@ -10,8 +10,8 @@ import UIKit
 public class xSafeView: xView {
     
     // MARK: - Public Override Func
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    public override func awakeFromNib() {
+        super.awakeFromNib()
         self.backgroundColor = .clear
     }
 }

@@ -17,6 +17,11 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     /// 扫描完成回调
     public typealias xHandlerScanCode = (String?) -> Void
     
+    // MARK: - Override Property
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     // MARK: - IBOutlet Property
     /// 扫描视图
     @IBOutlet weak var scanView: UIView!
@@ -27,19 +32,19 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
     
     // MARK: - Private Property
     /// 扫描完成回调
-    private var scanHandler : xHandlerScanCode?
+    var scanHandler : xHandlerScanCode?
     /// 会话层对象,数据交互
-    private var session : AVCaptureSession = AVCaptureSession()
+    var session : AVCaptureSession = AVCaptureSession()
     /// 边框图层
-    private var borderLayer = CAShapeLayer()
+    var borderLayer = CAShapeLayer()
     /// 定位描边图层
-    private var locateLayer = CAShapeLayer()
+    var locateLayer = CAShapeLayer()
     /// 是否扫描成功（防止多次回调）
-    private var isScanSuccess = false
+    var isScanSuccess = false
     /// 输入对象,用来捕捉图像
-    private var input : AVCaptureDeviceInput?
+    var input : AVCaptureDeviceInput?
     /// 输出对象,用来处理图像
-    private lazy var output : AVCaptureMetadataOutput =
+    lazy var output : AVCaptureMetadataOutput =
     {
         /*  这里面涉及到二维码输出时的坐标转换即：x/y互换，
             宽高互换得出可以扫描的位置，超出部分则不进行扫描 */
@@ -56,7 +61,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         return out
     }()
     /// 预览层,提供预览结果
-    private lazy var previewLayer : AVCaptureVideoPreviewLayer =
+    lazy var previewLayer : AVCaptureVideoPreviewLayer =
     {
         let layer : AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.session)
         return layer
@@ -99,9 +104,7 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         super.viewDidDisappear(animated)
         xDeviceManager.setFlashLight(.off)
     }
-    public override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
+    
     public override func addKit() {
         self.drawBorder()
         self.startScanAnime()

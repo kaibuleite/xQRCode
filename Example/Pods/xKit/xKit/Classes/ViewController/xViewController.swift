@@ -42,15 +42,15 @@ open class xViewController: UIViewController {
     
     // MARK: - Open Override Func
     open override func viewDidLoad() {
-        super.viewDidLoad() 
+        super.viewDidLoad()
+        // 模态全屏
+        self.modalPresentationStyle = .fullScreen
         // 强制白天模式
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         } else {
             // Fallback on earlier versions
         }
-        // 模态全屏
-        self.modalPresentationStyle = .fullScreen
         // 子控制器的Key
         self.childViewControllerKeys = ["Child", "child"]
         // 主线程初始化UI

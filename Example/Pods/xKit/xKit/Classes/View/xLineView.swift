@@ -12,17 +12,10 @@ public class xLineView: xView {
     // MARK: - IBInspectable Property
     /// 线条颜色
     @IBInspectable public var lineColor : UIColor = .groupTableViewBackground {
-        didSet {
-            self.backgroundColor = self.lineColor
-        }
+        willSet { self.backgroundColor = newValue }
     }
     /// 是否展示虚线
-    @IBInspectable public var isDashLine : Bool = false {
-        didSet {
-            guard self.isDashLine == true else { return }
-            self.drawDashLine()
-        }
-    }
+    @IBInspectable public var isDashLine : Bool = false
     /// 是否是垂直虚线
     @IBInspectable public var isVerticalDashLine : Bool = false
     /// 虚线绘制宽度
@@ -31,22 +24,22 @@ public class xLineView: xView {
     @IBInspectable public var dashSkipWidth : Float = 5
     
     // MARK: - Public Override Func
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        self.clipsToBounds = true
+        self.layer.masksToBounds = true
         self.isUserInteractionEnabled = false
+        self.backgroundColor = self.lineColor
     }
     public override func viewDidAppear() {
         super.viewDidAppear()
-        self.clipsToBounds = true
-        self.layer.masksToBounds = true
-        self.backgroundColor = self.lineColor
-        guard self.isDashLine == true else { return }
+        guard self.isDashLine else { return }
         self.drawDashLine()
     }
     
-    // MARK: - Private Func
+    // MARK: - Public Func
     /// 绘制虚线
-    private func drawDashLine()
+    public func drawDashLine()
     {
         self.layer.sublayers?.forEach({
             (layer) in
