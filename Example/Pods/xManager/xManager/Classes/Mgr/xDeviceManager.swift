@@ -10,11 +10,6 @@ import AdSupport
 import AVKit
 
 public class xDeviceManager: NSObject {
-
-    // MARK: - Public Property
-    /// 单例
-//    public static let shared = xDeviceManager()
-//    private override init() { }
     
     // MARK: - 设备信息
     /// 系统版本
@@ -38,6 +33,27 @@ public class xDeviceManager: NSObject {
             return value
         }
         return unknown
+    }
+    /// UDID
+    public static var UDID : String {
+        print("========== 读取钥匙串中的UDID...")
+        let key = (xAppManager.appBundleID + ".UDID")
+        var udid = ""
+        if let data = xKeychainManager.shared.query(valueForKey: key) {
+            if let obj = String.init(data: data, encoding: .utf8) {
+                udid = obj
+                print("========== 获取成功 UDID = \(obj)")
+            }
+        }
+        if udid.count == 0 {
+            let obj = xDeviceManager.UUID
+            print("========== 获取失败，新UDID = \(obj)")
+            if let data = obj.data(using: .utf8) {
+                xKeychainManager.shared.save(value: data, forKey: key)
+            }
+            udid = obj
+        }
+        return udid
     }
     /// UUID
     public static var UUID : String {

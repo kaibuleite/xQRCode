@@ -19,37 +19,37 @@ public class xNavigationView: xNibView {
     @IBInspectable public var isPopRootViewController : Bool = false
     /// 是否显示返回按钮
     @IBInspectable public var isShowBackBtn: Bool = true {
-        willSet { self.backBtn.isHidden = !newValue }
+        willSet { self.backBtn?.isHidden = !newValue }
     }
     /// 标题
     @IBInspectable public var title : String = "" {
-        willSet { self.titleLbl.text = newValue }
+        willSet { self.titleLbl?.text = newValue }
     }
     /// 标题颜色
     @IBInspectable public var titleColor: UIColor = .darkText {
         willSet {
-            self.titleLbl.textColor = newValue
-            self.backBtn.tintColor = newValue
+            self.titleLbl?.textColor = newValue
+            self.backBtn?.tintColor = newValue
         }
-    }
-    /// 分割线颜色
-    @IBInspectable public var lineColor: UIColor = UIColor.lightGray {
-        willSet { self.lineView.lineColor = newValue }
     }
     /// 导航栏颜色
     @IBInspectable public var barColor : UIColor = UIColor.xNew(hex: "F7F6F6") {
-        willSet { self.backgroundColor = newValue }
+        willSet { self.barColorView?.backgroundColor = newValue }
+    }
+    /// 分割线颜色
+    @IBInspectable public var lineColor: UIColor = UIColor.lightGray {
+        willSet { self.lineView?.lineColor = newValue }
     }
     
     // MARK: - IBOutlet Property
-    /// 背景色
-    @IBOutlet public weak var barColorView: xGradientColorView!
+    /// 渐变背景色
+    @IBOutlet public weak var barColorView: xGradientColorView?
     /// 返回按钮
-    @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var backBtn: UIButton?
     /// 标题标签
-    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var titleLbl: UILabel?
     /// 分割线
-    @IBOutlet weak var lineView: xLineView!
+    @IBOutlet weak var lineView: xLineView?
     
     // MARK: - Private Property
     /// 返回按钮点击回调
@@ -63,15 +63,12 @@ public class xNavigationView: xNibView {
     // MARK: - Public Override Func
     public override func awakeFromNib() {
         super.awakeFromNib()
-        self.titleLbl.text = self.title
-        if self.title.isEmpty {
-            self.titleLbl.text = self.vc?.title
-        }
-        self.titleLbl.textColor = self.titleColor
-        self.backBtn.tintColor = self.titleColor
-        self.backBtn.isHidden = !self.isShowBackBtn
-        self.barColorView.backgroundColor = self.barColor
-        self.lineView.lineColor = self.lineColor
+        self.backBtn?.isHidden = !self.isShowBackBtn
+        self.titleLbl?.text = self.title
+        self.titleLbl?.textColor = self.titleColor
+        self.backBtn?.tintColor = self.titleColor
+        self.barColorView?.backgroundColor = self.barColor
+        self.lineView?.lineColor = self.lineColor
     }
     public override func viewDidAppear() {
         super.viewDidAppear()

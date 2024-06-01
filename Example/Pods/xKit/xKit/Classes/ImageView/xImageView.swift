@@ -6,12 +6,11 @@
 //
 
 import UIKit
+import xExtension
 
 open class xImageView: UIImageView {
     
     // MARK: - IBInspectable Property
-    /// 默认填充纯色图
-    @IBInspectable public var fillImage : UIColor = .clear
     /// 边框线
     @IBInspectable public var borderWidth : CGFloat = 0 {
         willSet { self.layer.borderWidth = newValue }
@@ -58,17 +57,14 @@ open class xImageView: UIImageView {
         self.backgroundColor = .clear
         // 填充色
         let size = self.bounds.size
-        if self.fillImage == .clear {
-            self.image = UIColor.xNewRandom(alpha: 0.3).xToImage(size: size)
-        } else {
-            self.image = self.fillImage.xToImage(size: size)
-        }
+        self.image = UIColor.xNewRandom(alpha: 0.3).xToImage(size: size)
         // 边框
         if self.borderWidth > 0 {
             self.layer.borderWidth = self.borderWidth
             self.layer.borderColor = self.borderColor.cgColor
         }
         // 圆角遮罩
+        self.layer.masksToBounds = true
         self.maskLayer.backgroundColor = UIColor.clear.cgColor
         self.maskLayer.fillColor = UIColor.red.cgColor
         self.maskLayer.lineWidth = 1
@@ -81,7 +77,7 @@ open class xImageView: UIImageView {
         
         DispatchQueue.main.async {
             self.viewDidAppear()
-            guard self.cornerRadius != 0 else { return }
+            guard self.cornerRadius == 0 else { return }
             self.clip(tlRadius: self.tlRadius,
                       trRadius: self.trRadius,
                       blRadius: self.blRadius,
@@ -97,17 +93,15 @@ open class xImageView: UIImageView {
     // MARK: - Open Func
     /// 视图已显示（GCD调用）
     open func viewDidAppear() {
-        let radius = self.isCircle ? self.bounds.width / 2 : self.cornerRadius
-        self.clip(cornerRadius: radius)
+        
     }
     
     // MARK: - Public Func
     /// 规则圆角
     public func clip(cornerRadius : CGFloat)
     {
-        self.layer.masksToBounds = true
-        self.layer.cornerRadius = cornerRadius
         self.layer.mask = nil
+        self.layer.cornerRadius = cornerRadius
     }
     /// 不规则圆角
     public func clip(tlRadius : CGFloat,
@@ -115,8 +109,6 @@ open class xImageView: UIImageView {
                      blRadius : CGFloat,
                      brRadius : CGFloat)
     {
-        self.layer.cornerRadius = 0
-        self.layer.mask = nil
         guard tlRadius >= 0, trRadius >= 0, blRadius >= 0, brRadius >= 0 else { return }
         // 声明计算参数
         self.layoutIfNeeded()
@@ -131,6 +123,7 @@ open class xImageView: UIImageView {
         self.maskLayer.frame = frame
         self.maskLayer.path = path.cgPath
         self.layer.mask = self.maskLayer
+        self.layer.cornerRadius = 0
     }
     
 }

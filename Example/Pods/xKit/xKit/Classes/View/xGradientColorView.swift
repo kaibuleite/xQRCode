@@ -16,7 +16,6 @@ public class xGradientColorView: xView {
     // MARK: - Public Override Func
     public override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = .clear
     }
     public override func layoutSubviews() {
         super.layoutSubviews()

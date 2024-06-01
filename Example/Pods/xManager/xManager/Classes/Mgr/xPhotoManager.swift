@@ -8,12 +8,7 @@
 import UIKit
 import Photos
 
-public class xPhotoManager: NSObject {
-    
-    // MARK: - Public Property
-    /// 单例
-    public static let shared = xPhotoManager()
-    private override init() { }
+public class xPhotoManager: NSObject { 
     
     // MARK: - Public Property
     /// 是否授权了相册读写

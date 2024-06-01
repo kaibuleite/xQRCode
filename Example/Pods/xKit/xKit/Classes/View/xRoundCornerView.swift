@@ -21,6 +21,10 @@ public class xRoundCornerView: xView {
        */
     
     // MARK: - IBInspectable Property
+    /// 填充色
+    @IBInspectable open var fillColor : UIColor = .white {
+        willSet { self.backgroundColor = newValue }
+    }
     /// 所有角(优先级高)
     @IBInspectable public var radius : CGFloat = 0
     /// 左上圆角
@@ -39,16 +43,20 @@ public class xRoundCornerView: xView {
     // MARK: - Public Override Func
     public override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = self.fillColor
+        self.layer.masksToBounds = true
+        
         self.maskLayer.backgroundColor = UIColor.clear.cgColor
         self.maskLayer.fillColor = UIColor.red.cgColor
         self.maskLayer.lineWidth = 1
         self.maskLayer.lineCap = .round
         self.maskLayer.lineJoin = .round
+        
         self.clip(cornerRadius: self.radius)
     }
     public override func viewDidAppear() {
         super.viewDidAppear()
-        guard self.radius != 0 else { return }
+        guard self.radius == 0 else { return }
         self.clip(tlRadius: self.tlRadius,
                   trRadius: self.trRadius,
                   blRadius: self.blRadius,
@@ -63,7 +71,6 @@ public class xRoundCornerView: xView {
     /// 规则圆角
     public func clip(cornerRadius : CGFloat)
     {
-        self.layer.masksToBounds = true
         self.layer.cornerRadius = cornerRadius
         self.layer.mask = nil
     }
@@ -73,8 +80,6 @@ public class xRoundCornerView: xView {
                      blRadius : CGFloat,
                      brRadius : CGFloat)
     {
-        self.layer.cornerRadius = 0
-        self.layer.mask = nil
         // 必须有个角是圆角
         if tlRadius <= 0, trRadius <= 0, blRadius <= 0, brRadius <= 0 {
             return
@@ -92,6 +97,7 @@ public class xRoundCornerView: xView {
         self.maskLayer.frame = frame
         self.maskLayer.path = path.cgPath
         self.layer.mask = self.maskLayer
+        self.layer.cornerRadius = 0
     }
     
 }

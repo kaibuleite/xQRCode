@@ -13,15 +13,22 @@ public class xImagePickerController: UIImagePickerController, UIImagePickerContr
     /// 选取照片回调
     public typealias xHandlerChoosePhoto = (UIImage) -> Void
     
+    // MARK: - Public Property
+    open var typeEmoji : String { return "🖼" }
+    
     // MARK: - Private Property
     /// 回调
-    private var chooseHandler : xHandlerChoosePhoto?
+    var chooseHandler : xHandlerChoosePhoto?
     
     // MARK: - 内存释放
     deinit {
         self.chooseHandler = nil
         self.delegate = nil
-        print("📷 \(self.xClassInfoStruct.name)")
+        
+        let info = self.xClassInfoStruct
+        let space = info.space
+        let name = info.name
+        print("\(self.typeEmoji)【\(space).\(name)】")
     }
     
     // MARK: - Public Override Func

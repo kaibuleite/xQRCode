@@ -6,14 +6,11 @@
 //
 
 import UIKit
+import xExtension
 
 open class xView: UIView {
     
     // MARK: - IBInspectable Property
-    /// 填充色
-    @IBInspectable public var fillColor : UIColor = .clear {
-        willSet { self.backgroundColor = newValue }
-    }
     /// 边框线
     @IBInspectable public var borderWidth : CGFloat = 0 {
         willSet { self.layer.borderWidth = newValue }
@@ -21,6 +18,19 @@ open class xView: UIView {
     /// 边框颜色
     @IBInspectable public var borderColor : UIColor = .clear {
         willSet { self.layer.borderColor = newValue.cgColor}
+    }
+    
+    // MARK: - Public Property
+    /// 用于内存释放提示(可快速定位被释放的对象)
+    open var typeEmoji : String { return "" }
+    
+    // MARK: - 内存释放
+    deinit {
+        guard self.typeEmoji != "" else { return }
+        let info = self.xClassInfoStruct
+        let space = info.space
+        let name = info.name
+        print("\(self.typeEmoji)【\(space).\(name)】")
     }
     
     // MARK: - Open Override Func
@@ -44,11 +54,9 @@ open class xView: UIView {
     /// 初始化完成
     func initCompleted()
     {
-        self.backgroundColor = self.fillColor
-        if self.borderWidth > 0 {
-            self.layer.borderWidth = self.borderWidth
-            self.layer.borderColor = self.borderColor.cgColor
-        }
+        self.backgroundColor = .clear
+        self.layer.borderWidth = self.borderWidth
+        self.layer.borderColor = self.borderColor.cgColor
         
         DispatchQueue.main.async {
             self.viewDidAppear()
@@ -60,4 +68,5 @@ open class xView: UIView {
     open func viewDidAppear() {
         // 子类实现
     }
+    
 }

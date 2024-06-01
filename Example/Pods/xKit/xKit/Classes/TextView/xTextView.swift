@@ -14,18 +14,14 @@ open class xTextView: UITextView {
     // MARK: - IBInspectable Property
     /// 占位字符串
     @IBInspectable public var placeholderString : String? = "" {
-        didSet {
-            self.placeholderTextView.text = self.placeholderString
-        }
+        willSet { self.placeholderTextView.text = newValue }
     }
     /// 最长内容
     @IBInspectable public var maxTextCount : Int = 100
     
     // MARK: - Public Property
     open override var text: String! {
-        didSet {
-            self.checkText()
-        }
+        didSet { self.checkText() }
     }
     /// 非nil内容
     public var noNilText : String {
@@ -41,11 +37,11 @@ open class xTextView: UITextView {
     
     // MARK: - Private Property
     /// 是否加载过样式
-    private var isInitCompleted = false
+    var isInitCompleted = false
     /// 占位字符串控件
-    private let placeholderTextView = UITextView()
+    let placeholderTextView = UITextView()
     /// 自定义键盘扩展视图
-    private var accessoryView : xInputAccessoryView?
+    var accessoryView : xInputAccessoryView?
     
     // MARK: - Open Override Func
     open override func awakeFromNib() {

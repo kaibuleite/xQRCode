@@ -18,36 +18,41 @@ open class xViewController: UIViewController {
     /// 子控制器容器
     @IBOutlet open weak var childContainer: xContainerView?
     
-    // MARK: - IBInspectable Property
-    /// 控制器描述
-    @IBInspectable public var xTitle : String = ""
+    // MARK: - Override Property
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
     
     // MARK: - Public Property
+    /// 用于内存释放提示(可快速定位被释放的对象)
+    open var typeEmoji : String { return "♻️" }
     /// 是否显示中
     public var isAppear = false
     /// 是否完成数据加载(默认已完成)
-    public var isLoadRequestDataCompleted = true
-    /// 是否是根级父控制器
-    public var isRootParentViewController = false
+    public var isRequestDataCompleted = true
     /// 子控制器Key
     public var childViewControllerKeys = [String]()
     
     // MARK: - 内存释放
     deinit {
-        if self.isRootParentViewController {
-            print(">>>>> 释放视图控制器")
-        }
-        print("♻️ \(self.xClassInfoStruct.name)")
+        let info = self.xClassInfoStruct
+        let space = info.space
+        let name = info.name
+        print("\(self.typeEmoji)【\(space).\(name)】")
     }
     
     // MARK: - Open Override Func
+    open override class func xDefaultViewController() -> Self {
+        let vc = self.xNewStoryboard()
+        return vc
+    }
     open override func viewDidLoad() {
         super.viewDidLoad()
         // 模态全屏
         self.modalPresentationStyle = .fullScreen
         // 强制白天模式
         if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
+            self.overrideUserInterfaceStyle = .light
         } else {
             // Fallback on earlier versions
         }
@@ -60,16 +65,23 @@ open class xViewController: UIViewController {
             self.requestData()
         }
     }
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.requestDataWhenViewWillAppear()
+    }
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.requestDataWhenViewDidAppear()
         self.isAppear = true
+    }
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.requestDataWhenViewWillDisappear()
     }
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        self.requestDataWhenViewDidDisappear()
         self.isAppear = false
-    }
-    open override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
     }
     open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)

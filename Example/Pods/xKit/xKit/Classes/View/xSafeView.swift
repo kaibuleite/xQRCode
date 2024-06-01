@@ -12,6 +12,5 @@ public class xSafeView: xView {
     // MARK: - Public Override Func
     public override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = .clear
     }
 }

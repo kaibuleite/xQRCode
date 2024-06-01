@@ -17,9 +17,9 @@ open class xCountDownButton: xButton {
     /// 倒计时标题颜色
     @IBInspectable public var titleCountdownColor : UIColor = .lightGray
     /// 普通时背景颜色
-    @IBInspectable public var backgroundNormalColor : UIColor = .darkText
+    @IBInspectable public var backgroundNormalColor : UIColor = .clear
     /// 倒计时背景颜色
-    @IBInspectable public var backgroundCountdownColor : UIColor = .lightGray
+    @IBInspectable public var backgroundCountdownColor : UIColor = .clear
     /// 倒计时边框颜色
     @IBInspectable public var borderCountdownColor : UIColor = .lightGray
     

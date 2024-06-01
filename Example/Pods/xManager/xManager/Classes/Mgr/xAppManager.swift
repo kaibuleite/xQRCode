@@ -10,38 +10,37 @@ import xExtension
 
 public class xAppManager: NSObject {
 
-    // MARK: - Public Property
-    /// 单例
-    public static let shared = xAppManager()
-    private override init() { }
+    // MARK: - Enum
+    /// App运行模式
+    public enum AppRunMode {
+        case debug
+        case release
+    }
     
-    // TODO: - 应用配置
-    /// 是否是测试环境
-    public var isDebug = true
-    /// 是否打印控制台信息
-    public var isLog = true
-    /// 是否打印xModel参数缺少信息
-    public var isLogModelNoPropertyTip = false
+    // MARK: - 应用配置
+    /// 运行环境
+    //public let xAppRunMode = AppRunMode.debug
+    public static var runMode = xAppManager.AppRunMode.release
     
-    // TODO: - 常用参数（可编辑）
+    // MARK: - 常用参数
     /// 主题色
-    public var themeColor = UIColor.xNew(hex: "#487FFC")
+    public static var themeColor = UIColor.xNew(hex: "#487FFC")
     /// TableView背景色
-    public var tableViewBackgroundColor = UIColor.groupTableViewBackground
+    public static var tableViewBackgroundColor = UIColor.groupTableViewBackground
     /// 导航栏背景色
-    public var navigationBarColor = UIColor.xNew(hex: "F7F6F6")
+    public static var navigationBarColor = UIColor.xNew(hex: "F7F6F6")
     /// 导航栏背阴影线条景色
-    public var navigationBarShadowColor = UIColor.lightGray
+    public static var navigationBarShadowColor = UIColor.lightGray
     /// 占位色
-    public var placeholderColor = UIColor.xNew(hex: "F5F5F5")
+    public static var placeholderColor = UIColor.xNew(hex: "F5F5F5")
     /// 占位图_默认
-    public var placeholderImage = UIColor.xNew(hex: "F5F5F5").xToImage(size: .init(width: 5, height: 5))
+    public static var placeholderImage = UIColor.xNew(hex: "F5F5F5").xToImage(size: .init(width: 5, height: 5))
     /// 占位图_头像
-    public var placeholderImage_avatar = UIColor.xNew(hex: "F5F5F5").xToImage(size: .init(width: 5, height: 5))
+    public static var placeholderImage_avatar = UIColor.xNew(hex: "F5F5F5").xToImage(size: .init(width: 5, height: 5))
     /// 占位图_横幅
-    public var placeholderImage_banner = UIColor.xNew(hex: "F5F5F5").xToImage(size: .init(width: 5, height: 5))
+    public static var placeholderImage_banner = UIColor.xNew(hex: "F5F5F5").xToImage(size: .init(width: 5, height: 5))
     
-    // TODO: - 应用信息
+    // MARK: - 应用信息
     /// 名称
     public static var appBundleName : String {
         let name = Bundle.main.object(forInfoDictionaryKey: "CFBundleName")
@@ -66,4 +65,5 @@ public class xAppManager: NSObject {
         let ret = name as? String ?? ""
         return ret
     }
+    
 }

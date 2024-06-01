@@ -42,17 +42,17 @@ open class xTextField: UITextField, UITextFieldDelegate {
     
     // MARK: - Private Property
     /// 是否加载过样式
-    private var isInitCompleted = false
+    var isInitCompleted = false
     /// 自定义键盘扩展视图
-    private var accessoryView : xInputAccessoryView?
+    var accessoryView : xInputAccessoryView?
     /// 开始编辑回调
-    private var beginEditHandler : xHandlerTextFieldChangeStatus?
+    var beginEditHandler : xHandlerTextFieldChangeStatus?
     /// 编辑中回调
-    private var editingHandler : xHandlerTextFieldInput?
+    var editingHandler : xHandlerTextFieldInput?
     /// 编辑结束回调
-    private var endEditHandler : xHandlerTextFieldChangeStatus?
+    var endEditHandler : xHandlerTextFieldChangeStatus?
     /// return按钮回调
-    private var returnHandler : xHandlerTextFieldChangeStatus?
+    var returnHandler : xHandlerTextFieldChangeStatus?
     
     // MARK: - 内存释放
     deinit {
@@ -121,22 +121,22 @@ open class xTextField: UITextField, UITextFieldDelegate {
     
     // MARK: - Public Func
     /// 添加开始编辑回调
-    public func addBeginEditHandler(_ handler : @escaping xHandlerTextFieldChangeStatus)
+    public func addBeginEditHandler(_ handler : @escaping xTextField.xHandlerTextFieldChangeStatus)
     {
         self.beginEditHandler = handler
     }
     /// 添加编辑中回调
-    public func addEditingHandler(_ handler : @escaping xHandlerTextFieldInput)
+    public func addEditingHandler(_ handler : @escaping xTextField.xHandlerTextFieldInput)
     {
         self.editingHandler = handler
     }
     /// 添加结束编辑回调
-    public func addEndEditHandler(_ handler : @escaping xHandlerTextFieldChangeStatus)
+    public func addEndEditHandler(_ handler : @escaping xTextField.xHandlerTextFieldChangeStatus)
     {
         self.endEditHandler = handler
     }
     /// 添加return回调
-    public func addReturnHandler(_ handler : @escaping xHandlerTextFieldChangeStatus)
+    public func addReturnHandler(_ handler : @escaping xTextField.xHandlerTextFieldChangeStatus)
     {
         self.returnHandler = handler
     }

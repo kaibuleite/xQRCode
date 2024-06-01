@@ -16,15 +16,20 @@ extension UIViewController {
     ///   - container: 容器
     ///   - frame: frame
     public func xAddChild(viewController vc : UIViewController,
-                          in container : UIView,
+                          in container : UIView?,
                           frame : CGRect = .zero)
     {
+        guard let superView = container else {
+            print("⚠️ 无效的容器")
+            return
+        }
         self.addChild(vc)
-        container.addSubview(vc.view)
+        superView.addSubview(vc.view)
         if frame == .zero {
-            vc.view.frame = container.bounds
+            vc.view.frame = superView.bounds
         } else {
             vc.view.frame = frame
         }
     }
+    
 }
