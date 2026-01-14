@@ -192,7 +192,9 @@ public class xScanCodeViewController: xViewController, AVCaptureMetadataOutputOb
         self.previewLayer.frame = UIScreen.main.bounds
         self.view.layer.insertSublayer(previewLayer, at: 0)
         // 7.开始扫描
-        self.session.startRunning()
+        DispatchQueue.global().async {
+            self.session.startRunning()
+        }
     }
     /// 二维码扫描(本地相册)
     private func startScanCodeAlbum()
